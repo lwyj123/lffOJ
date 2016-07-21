@@ -1,4 +1,5 @@
 <?php
+
 // check for required fields
 require_once __DIR__ . '/config.php';
 //map
@@ -24,7 +25,6 @@ if (isset($jsonArr['function'])) {
 
     //return call_user_func($map[$actionFlag]);
     echo call_user_func($map[$function], $json);
-
 }
 else {
     echo 99;

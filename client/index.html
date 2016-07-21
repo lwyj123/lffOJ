@@ -5,11 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<meta name="keywords" content="Ribbon Login Form Responsive Templates, Iphone Compatible Templates, Smartphone Compatible Templates, Ipad Compatible Templates, Flat Responsive Templates"/>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">
+	<script src="jquery-3.1.0.js">
 	</script>
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
 <!--webfonts-->
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+
 <!--/webfonts-->
 </head>
 <body>
@@ -18,8 +18,8 @@
 
 <div class="login-box">
 		<form>
-		<input id="name" type="text" class="username" value="Your name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
-		<input id="pass" type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+		<input id="name" type="text"  value="Your name">
+		<input id="pass" type="password" value="Password">
 		</form>
 		<div class="remember">
 			<a href="#"><p>Sign up</p></a>
@@ -29,14 +29,7 @@
 		<div class="btn">
 			<input id="btn1" type="submit" value="LOG IN" >
 		</div>
-		<script type="text/javascript">
-		$('#btn1').click(function(){
-			$.post("index.php",{ function:"Login",Email:$('#name').value(),userPass:$('#pass').value()}
-					function(data){
-						alert(data);
-					});
-			});
-		</script>
+
 		<div class="clear"> </div>
 </div>
 
@@ -46,7 +39,15 @@
 <div class="copy-right">
 	<p>Make by <a href="#">LFF</a></p>
 </div>
-<!--//end-copyright-->
 
+<!--//end-copyright-->
+		<script type="text/javascript">
+		$('#btn1').click(function(){
+			$.post("http://localhost/lffOJ/server/index.php",{ function:"Login",Email:document.getElementById('name').value,userPass: document.getElementById('pass').value},
+					function(data){
+						alert(data);
+					});
+			});
+		</script>
 </body>
 </html>

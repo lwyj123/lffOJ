@@ -1,18 +1,19 @@
 <?php
 //测试{
-//"actionFlag":6,
-//"username":"fuck"
-//"passwd":"you"
+//"function":Login,
+//"Email":"443474713@qq.com",
+//"userPass":"fuckjava"
 //}
-//test finish
+
 
 
 function login($json) {
-    require_once "C:\\jianguoyun\\lffOJ\\server\\lib\\medoo.php";
+    require_once __DIR__ ."\\..\\lib\\medoo.php";
+
     $database = new medoo([
         // 必须配置项
         'database_type' => 'mysql',
-        'database_name' => 'lffoj',
+        'database_name' => 'lffOJ',
         'server' => 'localhost',
         'username' => 'root',
         'password' => 'fuck',
@@ -21,45 +22,34 @@ function login($json) {
         // 可选参数
         'port' => 3306,
     ]);
-
+    $res = array();
+    $res['status'] = 'success';
+    $res['content'] = '';
 
     $jsonArr = json_decode($json, true);
-    $email = $jsonArr['Email'];
-    $passwd = $jsonArr['userPass'];
+    $Email = $jsonArr['Email'];
+    $userPass = $jsonArr['userPass'];
 
-    $rows=$database->select("users","*",["Email"=>$email]);
+    if($Email == null|| $userPass == null) {
+        $res['status'] = 'error';
+        $res['content'] = 'areyoukiddingme';
+        return json_encode($res);
+    }
 
-    if($rows == null) {
-        $arr = array(
-            "status" => 'error',
-            "content" => 'no account'
-        );
-        $jsonarr = json_encode($arr);
-        return $jsonarr;
+    $datas = $database->select("Users", [
+        "Email",
+        "Password"
+    ], [
+        "AND" => [
+            "Email" => $Email,
+            "Password" => $userPass
+        ]
+    ]);
+
+    if($datas == null) {
+        $res['status'] = 'error';
+        $res['content'] = 'fack';
+        return json_encode($res);
     }
-    else if($passwd == $rows[0]) {
-            $arr = array(
-                "status" => 'success',
-                "content" => ''
-            );
-            $jsonarr = json_encode($arr);
-            return $jsonarr;
-        }
-    else if($passwd != $rows[0]){
-        echo $passwd . '    ' . $rows[0]['Password'];
-        $arr = array(
-            "status" => 'error',
-            "content" => 'fuck'
-        );
-        $jsonarr = json_encode($arr);
-        return $jsonarr;
-    }
-    else {
-        $arr = array(
-            "status" => 'error',
-            "content" => '未知错误'
-        );
-        $jsonarr = json_encode($arr);
-        return $jsonarr;
-    }
+    return json_encode($res);
 }
