@@ -1,53 +1,124 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Uncommon Online Judge Login</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<meta name="keywords" content="Ribbon Login Form Responsive Templates, Iphone Compatible Templates, Smartphone Compatible Templates, Ipad Compatible Templates, Flat Responsive Templates"/>
-	<script src="jquery-3.1.0.js">
-	</script>
+	<title>Register and Login for LFFoj</title>
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
-<!--webfonts-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Inscription and login forms,Login Forms,Sign up Forms,Registration Forms,News latter Forms,Elements"./>
+	<script src="jquery-3.1.0.js"></script>
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	</script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
 
-<!--/webfonts-->
+<!--webfonts-->
+		<link href='http://fonts.googleapis.com/css?family=Copse|Roboto' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
 </head>
 <body>
-<!--start-main-->
-<h1>Welcome!<span>Please Login...</span></h1>
 
-<div class="login-box">
-		<form>
-		<input id="name" type="text"  value="Your name">
-		<input id="pass" type="password" value="Password">
+<div align="center">
+	<img src="images/LOGO.png" width="250" />
+</div>
+<!--/start-main-->
+<div class="main">
+	<div class="wrap">
+	<!--/start-topo-one-->
+	<div class="top-one">
+	<!--/start-login-->
+	<div class="login-one">
+		<div class="create-account">
+			<div class="login-head">
+					<h2>Create Account</h2>
+					<span class="line">
+						<span class="sub-line"></span>
+					</span>
+
+			</div>
+				<form>
+					<p>Email <lable> *</lable></p>
+					<input id="register_email" type="text" class="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
+					<p>Nickname<lable> *</lable></p>
+					<input id="register_nickname" type="text" class="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
+					<p>Password <lable> *</lable></p>
+					<input id="register_password" type="password" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+					
+				<div class="sign-up">
+					<input type="reset" value="Clear">
+					<input id="btn1" type="submit" onclick="myFunction()" value="Register" >
+
+					<!-- pop-up-box -->  
+				<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+				<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+			<!--//pop-up-box -->
+				<div id="small-dialog2" class="mfp-hide">
+				<div class="signup">
+					<h3>Signup</h3>
+					<h4><a href="#">let's get started</a></h4>
+					<p>Email</p>
+					<input  id="login_email" type="text" class="email" placeholder="Email adress" required=""/>
+					<p>Password</p>
+					<input id="login_password"type="password" placeholder="Password" required=""/>
+					<div class="p-container">
+				</div>
+					<input id="btn2" type="submit"  value="LOG IN"/>
+				</div>
+					<script type="text/javascript">
+						$('#btn1').click(function(){
+							$.post("http://localhost/lffOJ/server/index.php",{ function:"Login",Email:document.getElementById('login_email').value,userPass: document.getElementById('login_password').value},
+									function(data){
+										alert(data);
+									});
+						});
+					</script>
+			</div>	
+			<script>
+						$(document).ready(function() {
+						$('.popup-with-zoom-anim').magnificPopup({
+							type: 'inline',
+							fixedContentPos: false,
+							fixedBgPos: true,
+							overflowY: 'auto',
+							closeBtnInside: true,
+							preloader: false,
+							midClick: true,
+							removalDelay: 300,
+							mainClass: 'my-mfp-zoom-in'
+						});
+																						
+						});
+				</script>
+		</div>
 		</form>
-		<div class="remember">
-			<a href="#"><p>Sign up</p></a>
-			<h4>Forgot your password?<a href="#">Click here.</a></h4>
-		</div>
 		<div class="clear"> </div>
-		<div class="btn">
-			<input id="btn1" type="submit" value="LOG IN" >
+		<h5>Do you have an account yet ? <a  class="signup play-icon popup-with-zoom-anim" href="#small-dialog2">Login</a></h5>
+			<script type="text/javascript">
+				$('#btn2').click(function(){
+					$.post("http://localhost/lffOJ/server/index.php",{ function:"Register",Email:document.getElementById('register_email').value,Nickname:document.getElementById('register_nickname').value,userPass: document.getElementById('register_password').value},
+							function(data){
+								alert(data);
+							});
+				});
+			</script>
+	</div>
+	</div>
+
 		</div>
-
-		<div class="clear"> </div>
+	</div>
 </div>
-
-<!--//End-login-form-->
-<!--start-copyright-->
-
-<div class="copy-right">
-	<p>Make by <a href="#">LFF</a></p>
-</div>
-
-<!--//end-copyright-->
-		<script type="text/javascript">
-		$('#btn1').click(function(){
-			$.post("http://localhost/lffOJ/server/index.php",{ function:"Login",Email:document.getElementById('name').value,userPass: document.getElementById('pass').value},
-					function(data){
-						alert(data);
-					});
-			});
-		</script>
+	<!--//End-login-form-->
+	<!--start-copyright-->
+   		<div class="copy-right">
+   			<div class="wrap">
+				<p>Copyright &copy; 2016  All rights  Reserved | Template by &nbsp;<a href="#">梁非凡小组</a></p>
+		</div>
+	</div>
+	<!--//end-copyright-->
 </body>
 </html>
