@@ -44,6 +44,22 @@ function register($json) {
         $res['content'] = 'Must have a nick';
         return json_encode($res);
     }
+
+    $datas = $database->select("users", [
+        "Email",
+    ], [
+        "AND" => [
+            "Email" => $Email,
+        ]
+    ]);
+
+    if ($datas <> NULL) 
+    {
+        $res['status'] = 'error';
+        $res['content'] = 'Same user detected';
+        return json_encode($res);
+    }
+
     $insert1 = $database -> insert("users",[
         "Email" => $Email,
         "Password" => $userPass,
