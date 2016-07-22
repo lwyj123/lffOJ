@@ -7,6 +7,7 @@
 //}
 
 function register($json) {
+    date_default_timezone_set('prc');
     require_once __DIR__ ."\\..\\lib\\medoo.php";
         $database = new medoo([
         // 必须配置项
@@ -28,6 +29,9 @@ function register($json) {
     $Email = $jsonArr['Email'];
     $userPass = $jsonArr['userPass'];
     $nickName = $jsonArr['nickName'];
+    $time = $_SERVER['REQUEST_TIME'];
+    
+
     if ($Email == null)
     {
     	$res['status'] = 'error';
@@ -43,7 +47,8 @@ function register($json) {
     $insert1 = $database -> insert("users",[
         "Email" => $Email,
         "Password" => $userPass,
-        "nickname" => $nickName
+        "nickname" => $nickName,
+        "RegisterDate" =>date('Y-m-d H:i:s',$time)
     	]);
     
     return json_encode($res);
