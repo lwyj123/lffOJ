@@ -15,7 +15,8 @@ function fileSelected() {
 
 function uploadFile() {
   var xhr = new XMLHttpRequest();
-  var fd = document.getElementById('form1').getFormData();
+  var fdo = document.getElementById('form1');
+  var fd = new FormData(fdo);
 
   /* event listners */
   xhr.upload.addEventListener("progress", uploadProgress, false);
@@ -23,7 +24,7 @@ function uploadFile() {
   xhr.addEventListener("error", uploadFailed, false);
   xhr.addEventListener("abort", uploadCanceled, false);
   /* Be sure to change the url below to the url of your upload server side script */
-  xhr.open("POST", "upload.php");
+  xhr.open("POST", "uploadTest.php");
   xhr.send(fd);
 }
 
