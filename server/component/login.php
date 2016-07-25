@@ -4,8 +4,8 @@
 //"Email":"443474713@qq.com",
 //"userPass":"fuckjava"
 //}
-
-
+require_once __DIR__.'\\..\\lib\\vendor\\autoload.php';
+use Lcobucci\JWT\Builder;
 
 function login($json) {
     require_once __DIR__ ."\\..\\lib\\medoo.php";
@@ -22,9 +22,23 @@ function login($json) {
         // 可选参数
         'port' => 3306,
     ]);
+
+
+
+    $token = (new Builder())->setIssuer('http://example.com') // Configures the issuer (iss claim)
+                            ->setAudience('http://example.org') // Configures the audience (aud claim)
+                            ->setId('4f1g23a12aa', true) // Configures the id (jti claim), replicating as a header item
+                            ->setIssuedAt(time()) // Configures the time that the token was issue (iat claim)
+                            ->setNotBefore(time() + 60) // Configures the time that the token can be used (nbf claim)
+                            ->setExpiration(time() + 3600) // Configures the expiration time of the token (nbf claim)
+                            ->set('uid', 8) // Configures a new claim, called "uid"
+                            ->getToken(); // Retrieves the generated token
+
+
     $res = array();
     $res['status'] = 'success';
     $res['content'] = '';
+    $res['token'] = $token;
 
     $jsonArr = json_decode($json, true);
     $Email = $jsonArr['Email'];
@@ -52,4 +66,4 @@ function login($json) {
         return json_encode($res);
     }
     return json_encode($res);
-}hu
+}
