@@ -27,6 +27,7 @@ function getTrainingList($json)
     $Limit = $jsonArr['Limit'];
 
     $data = $database->select("trainings",[
+        "Id",
         "Title",
         "Description"
     ],[

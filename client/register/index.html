@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8" />
+        <title>
+            Simple Responsive Form
+        </title>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+    
+    <body>
+        <form>
+            <header>
+                <h2>
+                    注册系统
+                </h2>
+                <div>
+                    lffOJ注册响应式页面
+                </div>
+            </header>
+            <div>
+                <label class="desc" id="title1" for="NickName">
+                    NickName
+                </label>
+                <div>
+                    <input id="NickName" name="NickName" type="text" tabindex="1" />
+                </div>
+            </div>
+            <div>
+                <label class="desc" id="title2" for="Email">
+                    Email
+                </label>
+                <div>
+                    <input id="Email" name="Email" type="email" tabindex="2" />
+                </div>
+            </div>
+            <div>
+                <label class="desc" id="title3" for="Password">
+                    Password
+                </label>
+                <div>
+                    <input id="Password" name="Password" type="password"  value="" tabindex="3" />
+                </div>
+            </div>
+            <div>
+                <div>
+                    <button type="button" onclick="fuck()">注册</button>                
+                </div>
+            </div>
+        </form>
+
+    </body>
+
+</html>

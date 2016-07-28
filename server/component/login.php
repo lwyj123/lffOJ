@@ -25,20 +25,12 @@ function login($json) {
 
 
 
-    $token = (new Builder())->setIssuer('http://example.com') // Configures the issuer (iss claim)
-                            ->setAudience('http://example.org') // Configures the audience (aud claim)
-                            ->setId('4f1g23a12aa', true) // Configures the id (jti claim), replicating as a header item
-                            ->setIssuedAt(time()) // Configures the time that the token was issue (iat claim)
-                            ->setNotBefore(time() + 60) // Configures the time that the token can be used (nbf claim)
-                            ->setExpiration(time() + 3600) // Configures the expiration time of the token (nbf claim)
-                            ->set('uid', 8) // Configures a new claim, called "uid"
-                            ->getToken(); // Retrieves the generated token
+
 
 
     $res = array();
     $res['status'] = 'success';
     $res['content'] = '';
-    $res['token'] = $token;
 
     $jsonArr = json_decode($json, true);
     $Email = $jsonArr['Email'];
@@ -65,5 +57,15 @@ function login($json) {
         $res['content'] = 'fack';
         return json_encode($res);
     }
+
+    $token = (new Builder())->setId('4f1g23a12aa', true) // Configures the id (jti claim), replicating as a header item
+                            ->setIssuedAt(time()) // Configures the time that the token was issue (iat claim)
+                            ->setNotBefore(time()) // Configures the time that the token can be used (nbf claim)
+                            ->setExpiration(time() + 3600) // Configures the expiration time of the token (nbf claim)
+                            ->set('Email', '443474713@qq.com') // Configures a new claim, called "uid"
+                            ->getToken(); // Retrieves the generated token
+
+    $res['content'] = (string)$token;
+
     return json_encode($res);
 }

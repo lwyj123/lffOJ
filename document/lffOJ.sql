@@ -16,7 +16,7 @@ create table Trainings (
 );
 create table Submission (
 	Id int(10) primary key not null AUTO_INCREMENT,
-	UserId int(10),
+	UserId varchar(20),
 	TrainingId int(10),
 	Status varchar(10),
 	ExcuteTime int(6),

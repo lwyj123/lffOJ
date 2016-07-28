@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Layout Shifter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <link rel='stylesheet prefetch' href='css/baseR.css'>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/lwcookies.js"></script>
+  </head>
+
+  <body>
+
+    <!--Pattern HTML-->
+  <div id="pattern" class="pattern">
+
+
+  	<div class="c">
+
+			<div class="c3">
+				<h3>代码上传</h3>
+                <form id="form1" enctype="multipart/form-data" method="post">
+                    <div class="row">
+                        <label for="fileToUpload">上传源文件(cpp)</label>
+                        <input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();"/>
+                    </div>
+                    <div class="row">
+                    <input type="button" onclick="uploadFile()" value="Upload" />
+                        </div>
+                    <div id="progressNumber"></div>
+                </form>
+			</div>
+		</div>
+	</div>
+
+
+    <div class="container"> 
+    <footer role="contentinfo">   
+      <div>
+        <nav id="menu">
+          <a href="http://localhost/lffOJ/client/">吔屎了，梁非凡</a>
+        </nav>
+      </div>
+    </footer>
+  </div>  
+
+
+	<!--End Pattern HTML-->    
+  </body>
+</html>
